@@ -2,14 +2,14 @@ import model.Question;
 import service.IGameDisplay;
 import service.IQuestionsProvider;
 import service.LocalGameDisplay;
-import service.LocalQuestionsProvider;
+import service.JdbcQuestionsProvider;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        IQuestionsProvider questionsProvider = new LocalQuestionsProvider();
+        IQuestionsProvider questionsProvider = new JdbcQuestionsProvider();
         IGameDisplay display = new LocalGameDisplay();
         int score = 0;
 

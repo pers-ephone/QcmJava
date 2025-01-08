@@ -93,7 +93,7 @@ public class LocalQuestionsProvider implements IQuestionsProvider {
         answers.put("Mer Mediterranee", true);
         answers.put("Ocean Indien", false);
         questions.add(
-                new Question("Quel est le nom de la mer qui separe la France de l'Italie?", answers)
+                new Question("Quel est le nom de la mer qui borde la France et l'Italie?", answers)
         );
         answers = new HashMap<>();
         answers.put("New York", false);

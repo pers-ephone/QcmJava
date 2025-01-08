@@ -26,8 +26,13 @@ public class Question {
     }
 
     public boolean isCorrect(String answer) {
-        String trimmedAnswer = answer.replaceAll("\\s", "");
-        // return answers[trimmedAnswer]: is answer correct
-        return answers.containsKey(trimmedAnswer) && answers.get(trimmedAnswer);
+        String lowerAnswer = answer.toLowerCase();
+
+        for(String key : answers.keySet()) {
+            if(key.toLowerCase().equals(lowerAnswer)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
