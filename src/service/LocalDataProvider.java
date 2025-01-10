@@ -1,6 +1,8 @@
 package service;
 
 import model.Question;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,11 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class LocalQuestionsProvider implements IQuestionsProvider {
+public class LocalDataProvider implements IDataProvider {
     private final List<Question> questions;
     private final Random random = new Random();
+    private static final Logger logger = LogManager.getLogger(LocalDataProvider.class);
 
-    public LocalQuestionsProvider() {
+    public LocalDataProvider() {
         questions = new ArrayList<>();
 
         Map<String, Boolean> answers = new HashMap<>();
@@ -192,6 +195,7 @@ public class LocalQuestionsProvider implements IQuestionsProvider {
             throw new IllegalStateException("No questions available.");
         }
 
+        logger.info("getting a local question");
         int randomIndex = random.nextInt(questions.size());
         return questions.get(randomIndex);
     }

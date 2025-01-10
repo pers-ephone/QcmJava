@@ -2,6 +2,6 @@ package service;
 
 import model.Question;
 
-public interface IQuestionsProvider {
+public interface IDataProvider {
     Question getRandomQuestion();
 }

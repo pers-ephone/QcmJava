@@ -8,11 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import model.Question;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class JdbcQuestionsProvider implements IQuestionsProvider {
+public class JdbcDataProvider implements IDataProvider {
     private final Connection connection;
+    private static final Logger logger = LogManager.getLogger(JdbcDataProvider.class);
 
-    public JdbcQuestionsProvider() {
+    public JdbcDataProvider() {
         this.connection = ConnectionJdbc.getConnection();
     }
     
@@ -40,6 +43,7 @@ public class JdbcQuestionsProvider implements IQuestionsProvider {
                         rs.getBoolean("isCorrect")
                 );
             }
+            logger.info("queried a question");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

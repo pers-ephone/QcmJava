@@ -1,21 +1,27 @@
 import model.Question;
 import service.IGameDisplay;
-import service.IQuestionsProvider;
+import service.IDataProvider;
 import service.LocalGameDisplay;
-import service.JdbcQuestionsProvider;
+import service.JdbcDataProvider;
 
 import java.util.Scanner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
+    public static Logger logger = LogManager.getLogger(Main.class.getName());
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        IQuestionsProvider questionsProvider = new JdbcQuestionsProvider();
+        IDataProvider questionsProvider = new JdbcDataProvider();
         IGameDisplay display = new LocalGameDisplay();
         int score = 0;
+        int QNUMBER = 5;
 
-        // Game loop
-        System.out.println("Démarrage du quiz: 5 questions");
-        for (int i = 0; i < 5; i++) {
+        logger.info("starting game");
+        // game loop
+        System.out.println("Démarrage du quiz: " + QNUMBER + " questions");
+        for (int i = 0; i < QNUMBER; i++) {
             Question question = questionsProvider.getRandomQuestion();
 
             display.displayQuestion(question);
